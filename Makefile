@@ -1,3 +1,4 @@
+# basic build, will fail to bundle as resources aren't handled here
 CXX = g++
 CXXFLAGS = -Wall -std=c++17
 
@@ -5,7 +6,7 @@ PKGCONFIG = $(shell which pkg-config)
 CFLAGS = $(shell $(PKGCONFIG) gtkmm-4.0 --cflags --libs)
 CFLAGS +=$(shell $(PKGCONFIG) spdlog --cflags --libs)
 #LIBS = `pkg-config --libs gtkmm-4.0`
-SRC_DIR = .
+SRC_DIR = ./src
 SRC_FILES = $(wildcard $(SRC_DIR)/**.cc)
 INCLUDE_DIRS = $(SRC_DIR)
 # env must go together DEBUG debug | RELEASE info

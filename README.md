@@ -51,3 +51,9 @@ hdiutil create -size 100m -fs 'HFS+' -volname 'My App' -type UDIF -layout SPUD t
 gzip -c template.dmg > template.dmg.gz
 
 ```
+
+## build deps
+* dylibbundler
+* meson
+* python>=3.7
+* iconutil

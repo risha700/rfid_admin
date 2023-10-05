@@ -12,6 +12,9 @@ gunzip < template.dmg.gz > working.dmg
 hdiutil attach working.dmg -noautoopen -quiet -mountpoint mnttmp
 rm -rf mnttmp/rfidAdmin.app
 mv /tmp/rfidAdmin.app mnttmp
+
+codesign -s "643PSPJM5M" --force --deep --preserve-metadata=entitlements,requirements,flags,runtime  mnttmp/rfidAdmin.app  
+codesign --verify --deep --strict --verbose=2 mnttmp/rfidAdmin.app
 # NOTE: output of hdiutil changes every now and then.
 # Verify that this is still working.
 hdiutil detach $(hdiutil info|grep "mnttmp"|awk '{print $1}')

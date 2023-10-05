@@ -1,6 +1,6 @@
 project('rfidAdmin', 'cpp',
   version : '1.01.0',
-  default_options : ['warning_level=3', 'cpp_std=c++17']
+  default_options : ['warning_level=0', 'cpp_std=c++17']
   )
 APP_NAME = 'rfidAdmin'
 
