@@ -60,16 +60,16 @@ endif
 # bundle
 
 if host_machine.system() == 'darwin'
-  install_data('app_entry.sh',
+  install_data('build_scripts/app_entry.sh',
   install_dir : 'Contents/MacOS')
 
-  install_data('icon.icns',
+  install_data('assets/icons/icon.icns',
   install_dir : 'Contents/Resources')
 
   install_data('Info.plist',
   install_dir : 'Contents')
 
-  meson.add_install_script('osx_bundler.sh')
+  meson.add_install_script('build_scripts/osx_bundler.sh')
 endif
 
 # if host_machine.system() == 'linux'

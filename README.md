@@ -14,8 +14,8 @@ Gnome C++ application that implements RFID MFRC522 simple interface
 
       https://mesonbuild.com/Creating-OSX-packages.html
     ```
-    # helper
-    ./build_osx.package.sh
+    # helper script
+    ./build_scripts/build_osx_package.sh
     ```
     Signing is required manually for distribution.
     - Windows
