@@ -13,9 +13,10 @@ namespace
         Glib::ustring m_description;
     };
 
-    std::array<GridEntry, 4> entries =
+    std::array<GridEntry, 5> entries =
             {
-                GridEntry{"/assets/read.svg", "RFID_PING"},
+                GridEntry{"/assets/nfc.svg", "RFID_PING"},
+                GridEntry{"/assets/read.svg", "RFID_AUTH"},
                 GridEntry{"/assets/scan.svg", "RFID_READ"},
                 GridEntry{"/assets/present_tag.png", "RFID_DUMP"},
                 GridEntry{"/assets/write.svg", "RFID_WRITE"}

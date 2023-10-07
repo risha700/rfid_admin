@@ -24,7 +24,10 @@ Gtk::Application("rfid.admin.app.opaic.nz", Gio::Application::Flags::HANDLES_OPE
 
     Glib::set_application_name("RFID Admin");
     // set app env
- 
+
+    // Set the UTF-8 locale
+    setlocale(LC_ALL, "C.UTF-8");
+    
     logger->info("App in {} mode",environment);
 
     // connect signals

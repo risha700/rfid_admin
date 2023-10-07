@@ -1,0 +1,55 @@
+[
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "importPath": "glob",
+        "description": "glob",
+        "isExtraImport": true,
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "sdl_url",
+        "kind": 5,
+        "importPath": "build_scripts.build_windows_package",
+        "description": "build_scripts.build_windows_package",
+        "peekOfCode": "sdl_url = 'http://libsdl.org/release/SDL2-devel-2.0.3-VC.zip'\nsdl_filename = 'SDL2-devel-2.0.3-VC.zip'\nsdl_dir = 'SDL2-2.0.3'\nshutil.rmtree('build', ignore_errors=True)\nos.mkdir('build')\nif not os.path.exists(sdl_filename):\n    response = urllib.request.urlopen(sdl_url, timeout=600.0)\n    data = response.read()\n    open(sdl_filename, 'wb').write(data)\nshutil.unpack_archive(sdl_filename, 'build')",
+        "detail": "build_scripts.build_windows_package",
+        "documentation": {}
+    },
+    {
+        "label": "sdl_filename",
+        "kind": 5,
+        "importPath": "build_scripts.build_windows_package",
+        "description": "build_scripts.build_windows_package",
+        "peekOfCode": "sdl_filename = 'SDL2-devel-2.0.3-VC.zip'\nsdl_dir = 'SDL2-2.0.3'\nshutil.rmtree('build', ignore_errors=True)\nos.mkdir('build')\nif not os.path.exists(sdl_filename):\n    response = urllib.request.urlopen(sdl_url, timeout=600.0)\n    data = response.read()\n    open(sdl_filename, 'wb').write(data)\nshutil.unpack_archive(sdl_filename, 'build')\nlibs = glob(os.path.join('build', sdl_dir, 'lib/x86/*'))",
+        "detail": "build_scripts.build_windows_package",
+        "documentation": {}
+    },
+    {
+        "label": "sdl_dir",
+        "kind": 5,
+        "importPath": "build_scripts.build_windows_package",
+        "description": "build_scripts.build_windows_package",
+        "peekOfCode": "sdl_dir = 'SDL2-2.0.3'\nshutil.rmtree('build', ignore_errors=True)\nos.mkdir('build')\nif not os.path.exists(sdl_filename):\n    response = urllib.request.urlopen(sdl_url, timeout=600.0)\n    data = response.read()\n    open(sdl_filename, 'wb').write(data)\nshutil.unpack_archive(sdl_filename, 'build')\nlibs = glob(os.path.join('build', sdl_dir, 'lib/x86/*'))\n[shutil.copy(x, 'build') for x in libs]",
+        "detail": "build_scripts.build_windows_package",
+        "documentation": {}
+    },
+    {
+        "label": "libs",
+        "kind": 5,
+        "importPath": "build_scripts.build_windows_package",
+        "description": "build_scripts.build_windows_package",
+        "peekOfCode": "libs = glob(os.path.join('build', sdl_dir, 'lib/x86/*'))\n[shutil.copy(x, 'build') for x in libs]\n# Sorry for this hack but this needs to work during development\n# when Meson is not in path.\nsubprocess.check_call(['python3', r'..\\..\\meson.py', 'build',\n                       '--backend=ninja', '--buildtype=release'])\nsubprocess.check_call(['ninja'], cwd='build')\nshutil.copy('myapp.iss', 'build')\nsubprocess.check_call([r'\\Program Files\\Inno Setup 5\\ISCC.exe', 'myapp.iss'],\n                      cwd='build')",
+        "detail": "build_scripts.build_windows_package",
+        "documentation": {}
+    }
+]

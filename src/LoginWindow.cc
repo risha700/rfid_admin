@@ -20,7 +20,7 @@ LoginWindow::LoginWindow():
     login_container.set_margin(10);
     login_container.set_valign(Gtk::Align::BASELINE_FILL);
     hero_image.set_size_request(250,300);
-    hero_image.set("assets/sec.jpg");
+    hero_image.set_from_resource("/assets/sec.jpg");
     login_container.prepend(hero_image);
     set_child(login_container);
     submit_btn.set_halign(Gtk::Align::CENTER);
