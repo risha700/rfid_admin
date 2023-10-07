@@ -28,11 +28,11 @@ protected:
     Glib::RefPtr<Gio::SimpleAction> m_refChoice;
     Gtk::Box container, status_box;
     Gtk::Button m_btn,controls_btn, send_command_btn;
-    Gtk::Label connection_status,  reader_message;
+    Gtk::Label connection_status;
     Gtk::Entry m_entry;
     Gtk::Separator m_Separator;
     Gtk::Image hero_image, status_img;
-    Gtk::TextView m_text;
+    Gtk::TextView m_text, reader_message;
     Gtk::Stack m_stack;
     ControlsWindow control_win;
     InputDialog modal;

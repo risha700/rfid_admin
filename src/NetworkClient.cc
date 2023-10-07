@@ -19,7 +19,7 @@ NetworkClient::~NetworkClient(){
 
 }
 void NetworkClient::recv_bg_listener(){
-    char buffer[2048]; // Buffer to hold received data
+    char buffer[5500]; // Buffer to hold received data
     ssize_t bytesRead = recv(clientSocket, buffer, sizeof(buffer), 0);
     if (bytesRead == -1) {
         logger->error("Error receiving data:  {}",strerror(errno));
@@ -66,6 +66,7 @@ int NetworkClient::init_socket() {
     struct timeval timeout;
     timeout.tv_sec = 10;  // 10 seconds
     timeout.tv_usec = 0;
+
     if (setsockopt(clientSocket, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) == -1) {
         logger->error("Error setting receiving timeout:  {}",strerror(errno));
         close(clientSocket);
@@ -78,6 +79,7 @@ int NetworkClient::init_socket() {
         close(clientSocket);
         return -1;
     }
+
 
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(iot_server_port);

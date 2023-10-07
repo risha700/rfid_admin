@@ -27,7 +27,7 @@ Gtk::Application("rfid.admin.app.opaic.nz", Gio::Application::Flags::HANDLES_OPE
 
     // Set the UTF-8 locale
     setlocale(LC_ALL, "C.UTF-8");
-    
+
     logger->info("App in {} mode",environment);
 
     // connect signals
@@ -75,7 +75,7 @@ Glib::RefPtr<App> App::create()
 
 void App::on_data_received(const std::string &data) const {
     // update UI
-    logger->debug("App.cc => Data received fired... {}", data.c_str());
+    // logger->debug("App.cc => Data received fired... {}", data.c_str());
 }
 
 auto* App::create_login_window()

@@ -58,7 +58,7 @@ BaseWindow::BaseWindow():
     controls_btn.set_halign(Gtk::Align::START);
     container.append(controls_btn);
     container.append(send_command_btn);
-    reader_message.set_text("place RFID tag");
+    // reader_message.set_text("place RFID tag");
     container.append(m_entry);
     container.append(reader_message);
     // signals
@@ -122,12 +122,12 @@ void BaseWindow::on_controls_show_click(){
 }
 
 void BaseWindow::on_send_command(){
-    reader_message.set_text("...sending...\n\nPresent a tag! ");
+    // reader_message.set_text("...sending...\n\nPresent a tag! ");
     auto content = m_entry.get_text();
     if(!content.empty()){
         app->network_client.socket_send(content);
     }else{
-        reader_message.set_text("Check your input!");
+        // reader_message.set_text("Check your input!");
     }
 }
 
@@ -153,7 +153,10 @@ void BaseWindow::on_check_network_click()
 void BaseWindow::on_data_received(const std::string &data) {
     // update UI
     app->logger->debug("BaseWindow=> Data received {}", data.c_str());
-    reader_message.set_text(data.c_str());
+    auto buff = Gtk::TextBuffer::create();
+    buff->set_text(data.c_str());
+    // reader_message.set_text(data.c_str());
+    reader_message.set_buffer(buff);
 
 }
 
